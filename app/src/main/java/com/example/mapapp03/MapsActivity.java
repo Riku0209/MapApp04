@@ -11,6 +11,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -58,15 +59,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng center = new LatLng(31,-171);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center,2));
 
-        //線を描く
-        PolylineOptions line = new PolylineOptions();
-        line.add(aomori);
-        line.add(america);
-        //色、太さ、測地線
-        line.color(Color.RED);
-        line.width(20);
-        line.geodesic(true);
-        mMap.addPolyline(line);
+//        //線を描く
+//        PolylineOptions line = new PolylineOptions();
+//        line.add(aomori);
+//        line.add(america);
+////        //色、太さ、測地線
+////        line.color(Color.RED);
+////        line.width(20);
+////        line.geodesic(true);
+//         mMap.addPolyline(line);
+//
+//        //３地点を結ぶ半透明の三角形を描く
+//        PolylineOptions line2 = new PolylineOptions();
+//        line2.add(aomori);
+//        line2.add(sydney);
+//        mMap.addPolyline(line2);
+//
+//        PolylineOptions line3 = new PolylineOptions();
+//        line3.add(sydney);
+//        line3.add(america);
+//        mMap.addPolyline(line3);
+
+        //３地点を結ぶ半透明の三角形を描く
+        PolygonOptions options = new PolygonOptions();
+        options.strokeColor(Color.BLUE);
+        options.add(aomori,sydney,america);
+        options.fillColor(Color.argb(70,0,0,500));
+        mMap.addPolygon(options);
 
     }
 }
