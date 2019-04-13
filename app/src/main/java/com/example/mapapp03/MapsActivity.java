@@ -41,8 +41,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // シドニーの緯度経度を設定して、そこにマーカーを設置
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //シドニーにカメラを移動
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        //カメラの位置とズームを設定
+        LatLng center = new LatLng(31,-171);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center,2));
 
         //日本の緯度経度を設定して、そこにマーカーを設置
         LatLng aomori = new LatLng(40.95795,140.8781 );
