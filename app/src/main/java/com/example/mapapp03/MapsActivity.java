@@ -9,6 +9,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
@@ -81,11 +82,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.addPolyline(line3);
 
         //３地点を結ぶ半透明の三角形を描く
-        PolygonOptions options = new PolygonOptions();
-        options.strokeColor(Color.BLUE);
-        options.add(aomori,sydney,america);
-        options.fillColor(Color.argb(70,0,0,500));
-        mMap.addPolygon(options);
+//        PolygonOptions options = new PolygonOptions();
+//        options.strokeColor(Color.BLUE);
+//        options.add(aomori,sydney,america);
+//        options.fillColor(Color.argb(70,0,0,500));
+//        mMap.addPolygon(options);
 
+
+        //３地点を中心とする半透明の円を描く（３つの円が重なるようにおおきさを調整）
+        CircleOptions circle = new CircleOptions();
+        circle.center(aomori);
+        circle.radius(100000000);
+        mMap.addCircle(circle);
+
+        CircleOptions circle2 = new CircleOptions();
+        circle2.center(america);
+        circle2.radius(10000000);
+        mMap.addCircle(circle2);
+
+        CircleOptions circle3 = new CircleOptions();
+        circle3.center(sydney);
+        circle3.radius(10000000);
+        mMap.addCircle(circle3);
     }
 }
